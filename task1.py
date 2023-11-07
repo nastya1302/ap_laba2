@@ -2,7 +2,7 @@ import csv
 import os
 
 def writing_absolute_path(name: str) -> list:
-    abs_path = os.path.join(os.path.abspath('dataset'), name)
+    abs_path = os.path.join(os.path.abspath('dataset1'), name)
     list_images = os.listdir(abs_path)
     rez_paths = []
     for i in list_images:
@@ -10,7 +10,7 @@ def writing_absolute_path(name: str) -> list:
     return rez_paths
 
 def writing_relative_path(name: str) -> list:
-    rel_path = os.path.join(os.path.relpath('dataset'), name)
+    rel_path = os.path.join(os.path.relpath('dataset1'), name)
     list_images = os.listdir(rel_path)
     rez_paths = []
     for i in list_images:
