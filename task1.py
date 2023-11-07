@@ -1,15 +1,32 @@
 import csv
 import os
 
-def creating_csvfile(name: str) -> None:
-    with open(name + ".csv", 'w') as f:
+def  writing_absolute_path(name: str) -> list:
+    p = os.path.abspath('dataset')
+    #print(p)
+    path_n = os.path.join(p, name)
+    rez = os.listdir(path_n)
+    #print(path_n)
+    rez_path = []
+    for i in rez:
+       rez_path.append(os.path.join(path_n, i))
+    #for item in enumerate(rez_path):
+     #   print(item) 
+    return rez_path
+
+def creating_csvfile(name: str, names: str) -> None:
+    with open(name + ".csv", 'w', newline='') as f:
         filewriter = csv.writer(f, delimiter=',', lineterminator='\r')
         filewriter.writerow(['Absolute path', 'Relative path', 'Class name'])
-        
+    #p = os.path.abspath(name+".csv")
+    #print(p)
+    for i in names:
+        writing_absolute_path(i)
 
 def main()->None:
     #print(os.getcwd()) 
-    creating_csvfile("Annotasion dataset")
+    names = ("rose", "tulip")
+    creating_csvfile("Annotasion1", names)
 
 if __name__ == "__main__":
     main()
