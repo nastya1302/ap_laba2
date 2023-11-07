@@ -10,11 +10,11 @@ def writing_absolute_path(name: str) -> list:
     rez_path = []
     for i in rez:
        rez_path.append(os.path.join(path_n, i))
-    for item in enumerate(rez_path):
-        print(item) 
+    #for item in enumerate(rez_path):
+    #    print(item) 
     return rez_path
 
-def writing_relative_path(name: str):
+def writing_relative_path(name: str) -> list:
     p = os.path.relpath('dataset')
     #print(p)
     path_n = os.path.join(p, name)
@@ -23,8 +23,8 @@ def writing_relative_path(name: str):
     rez_path = []
     for i in rez:
        rez_path.append(os.path.join(path_n, i))
-    for item in enumerate(rez_path):
-        print(item) 
+    #for item in enumerate(rez_path):
+    #    print(item) 
     return rez_path
 
 def creating_csvfile(name: str, names: str) -> None:
@@ -33,10 +33,10 @@ def creating_csvfile(name: str, names: str) -> None:
         filewriter.writerow(['Absolute path', 'Relative path', 'Class name'])
     #p = os.path.abspath(name+".csv")
     #print(p)
-    for i in names:
-        writing_absolute_path(i)
-        writing_relative_path(i)
-    
+        for i in names:
+           filewriter.writerow([writing_absolute_path(i), writing_relative_path(i), i])
+           #writing_absolute_path(i)
+           #writing_relative_path(i)
 
 def main()->None:
     #print(os.getcwd()) 
