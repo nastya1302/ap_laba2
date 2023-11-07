@@ -1,7 +1,7 @@
 import csv
 import os
 
-def  writing_absolute_path(name: str) -> list:
+def writing_absolute_path(name: str) -> list:
     p = os.path.abspath('dataset')
     #print(p)
     path_n = os.path.join(p, name)
@@ -10,8 +10,21 @@ def  writing_absolute_path(name: str) -> list:
     rez_path = []
     for i in rez:
        rez_path.append(os.path.join(path_n, i))
-    #for item in enumerate(rez_path):
-     #   print(item) 
+    for item in enumerate(rez_path):
+        print(item) 
+    return rez_path
+
+def writing_relative_path(name: str):
+    p = os.path.relpath('dataset')
+    #print(p)
+    path_n = os.path.join(p, name)
+    rez = os.listdir(path_n)
+    #print(path_n)
+    rez_path = []
+    for i in rez:
+       rez_path.append(os.path.join(path_n, i))
+    for item in enumerate(rez_path):
+        print(item) 
     return rez_path
 
 def creating_csvfile(name: str, names: str) -> None:
@@ -22,6 +35,8 @@ def creating_csvfile(name: str, names: str) -> None:
     #print(p)
     for i in names:
         writing_absolute_path(i)
+        writing_relative_path(i)
+    
 
 def main()->None:
     #print(os.getcwd()) 
