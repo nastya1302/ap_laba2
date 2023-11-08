@@ -11,5 +11,8 @@ def get_next(name_class: str) -> str:
         else:
             yield None
 
+def main():
+    print(*get_next('rose'))
 
-print(*get_next('rose'))
+if __name__ == "__main__":
+    main()
