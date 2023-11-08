@@ -13,7 +13,7 @@ def copy_images(old_dir: str, new_dir: str, names: list) -> None:
         path = os.path.join(os.path.abspath(old_dir), name)
         list_images = os.listdir(path)
         for img in list_images:
-            new_name = f'{(random_number[count]).zfill(5)}.jpg'
+            new_name = f'{random_number[count]}'.zfill(5)
             shutil.copy(
             os.path.join(path, img),
             os.path.join(new_dir, f'{new_name}.jpg')

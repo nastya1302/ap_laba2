@@ -16,7 +16,7 @@ def copy_images(old_dir: str, new_dir: str, names: list) -> None:
             ) 
             with open('Annotasion2.csv', 'a') as f:
                 filewriter = csv.writer(f, delimiter=',', lineterminator='\r')
-                filewriter.writerow([os.path.join(abs_path, f'{name}_{img}.jpg'), os.path.join(rel_path, f'{name}_{img}.jpg'), name])
+                filewriter.writerow([os.path.join(abs_path, f'{name}_{img}'), os.path.join(rel_path, f'{name}_{img}'), name])
 
 
 def creating_csvfile(namecsv: str) -> None:
