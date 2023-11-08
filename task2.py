@@ -18,10 +18,12 @@ def copy_images(old_dir: str, new_dir: str, names: list) -> None:
                 filewriter = csv.writer(f, delimiter=',', lineterminator='\r')
                 filewriter.writerow([os.path.join(abs_path, f'{name}_{img}.jpg'), os.path.join(rel_path, f'{name}_{img}.jpg'), name])
 
+
 def creating_csvfile(namecsv: str) -> None:
     with open(namecsv + ".csv", 'w', newline='') as f:
         filewriter = csv.writer(f, delimiter=',', lineterminator='\r')
         filewriter.writerow(['Absolute path', 'Relative path', 'Class name'])
+
 
 def main() -> None:
     new_dir = "dataset2"
@@ -30,6 +32,7 @@ def main() -> None:
     class_name = ["rose", "tulip"]
     creating_csvfile("Annotasion2")
     copy_images("dataset1", "dataset2", class_name)
+
 
 if __name__ == "__main__":
     main()

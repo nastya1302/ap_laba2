@@ -29,6 +29,7 @@ def creating_csvfile(namecsv: str) -> None:
         filewriter = csv.writer(f, delimiter=',', lineterminator='\r')
         filewriter.writerow(['Absolute path', 'Relative path', 'Class name'])
 
+
 def main() -> None:
     new_dir = "dataset3"
     if not os.path.isdir(new_dir):
@@ -36,6 +37,7 @@ def main() -> None:
     class_name = ["rose", "tulip"]
     creating_csvfile("Annotasion3")
     copy_images("dataset1", new_dir, class_name)
+
 
 if __name__ == "__main__":
     main()
