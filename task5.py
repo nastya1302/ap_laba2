@@ -2,7 +2,7 @@ import os
 
 
 class MyIterator:
-    def __init__(self, class_name):
+    def __init__(self, class_name: str):
         self.class_name = class_name
         self.counter = 0
         self.data = os.listdir(os.path.join('dataset1', class_name))
@@ -17,12 +17,12 @@ class MyIterator:
             raise StopIteration
 
 
-def main():
-    class_rose = MyIterator('rose')
+def main(name):
+    class_name = MyIterator(name)
 
-    for i in range(5):
-        print(next(class_rose))
+    for _ in range(5):
+        print(next(class_name))
 
 
 if __name__ == "__main__":
-    main()
+    main('rose')

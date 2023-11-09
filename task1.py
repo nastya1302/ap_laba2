@@ -1,8 +1,9 @@
 import csv
 import os
+from typing import List
 
 
-def writing_absolute_path(name: str, dir: str) -> list:
+def writing_absolute_path(name: str, dir: str) -> List[str]:
     abs_path = os.path.join(os.path.abspath(dir), name)
     list_images = os.listdir(abs_path)
     rez_paths = []
@@ -11,7 +12,7 @@ def writing_absolute_path(name: str, dir: str) -> list:
     return rez_paths
 
 
-def writing_relative_path(name: str, dir: str) -> list:
+def writing_relative_path(name: str, dir: str) -> List[str]:
     rel_path = os.path.join(os.path.relpath(dir), name)
     list_images = os.listdir(rel_path)
     rez_paths = []
@@ -35,14 +36,11 @@ def write_path(namecsv: str, name: str, dir: str):
             filewriter.writerow([abs_path, rel_path, name])
 
 
-def main() -> None:
-    dir = "dataset1"
-    class1 = "rose"
-    class2 = "tulip"
+def main(name1: str, name2: str, dir: str) -> None:
     creating_csvfile("Annotasion1", dir)
-    write_path("Annotasion1", class1, dir)
-    write_path("Annotasion1", class2, dir)
+    write_path("Annotasion1", name1, dir)
+    write_path("Annotasion1", name2, dir)
 
 
 if __name__ == "__main__":
-    main()
+    main('rose', 'tulip', 'dataset1')

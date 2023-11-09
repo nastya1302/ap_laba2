@@ -2,9 +2,10 @@ import os
 import shutil
 import csv
 import random 
+from typing import List
 
 
-def copy_images(old_dir: str, new_dir: str, names: list) -> None:
+def copy_images(old_dir: str, new_dir: str, names: List[str]) -> None:
     abs_path = os.path.abspath(new_dir)
     rel_path = os.path.relpath(new_dir)
     random_number = random.sample((range(0,10000)), 2000) 
@@ -30,14 +31,12 @@ def creating_csvfile(namecsv: str) -> None:
         filewriter.writerow(['Absolute path', 'Relative path', 'Class name'])
 
 
-def main() -> None:
-    new_dir = "dataset3"
+def main(names: List[str], old_dir: str, new_dir: str) -> None:
     if not os.path.isdir(new_dir):
         os.mkdir(new_dir)
-    class_name = ["rose", "tulip"]
     creating_csvfile("Annotasion3")
-    copy_images("dataset1", new_dir, class_name)
+    copy_images("dataset1", new_dir, names)
 
 
 if __name__ == "__main__":
-    main()
+    main(["rose", "tulip"], 'dataset1', 'dataset3')
