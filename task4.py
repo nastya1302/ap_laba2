@@ -18,6 +18,10 @@ def get_next(name_class: str) -> str:
 
 
 def main(name: str) -> None:
+    """
+    The function main() receives the class name as input and passes it to the function, 
+    which returns the relative path to the next image, and prints them.
+    """
     print(*get_next(name))
 
 

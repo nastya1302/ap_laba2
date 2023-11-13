@@ -5,8 +5,10 @@ from typing import List
 
 def writing_absolute_path(name: str, dir: str) -> List[str]:
     """
-    The function gets the absolute path of the specified directory 
-    and a list of the names of the elements in it. Adds absolute paths of elements to the list.
+    The function accepts the name of the class and the name of the directory as input.
+    The function gets the absolute path to the specified directory
+    and a list of the names of the elements in it. Adds absolute paths
+    of elements to the list. Returns a list of paths.
     """
     abs_path:str = os.path.join(os.path.abspath(dir), name)
     list_images:List[str] = os.listdir(abs_path)
@@ -18,8 +20,10 @@ def writing_absolute_path(name: str, dir: str) -> List[str]:
 
 def writing_relative_path(name: str, dir: str) -> List[str]:
     """
-    The function gets the relative path of the specified directory 
-    and a list of the names of the elements in it. Adds relative paths of items to the list.
+    The function accepts the name of the class and the name of the directory as input.
+    The function gets the relative path to the specified directory
+    and a list of the names of the elements in it. Adds relative paths
+    of elements to the list. Returns a list of paths.
     """
     rel_path:str = os.path.join(os.path.relpath(dir), name)
     list_images:List[str] = os.listdir(rel_path)
@@ -29,9 +33,10 @@ def writing_relative_path(name: str, dir: str) -> List[str]:
     return rez_paths
 
 
-def creating_csvfile(namecsv: str, name: str) -> None:
+def creating_csvfile(namecsv: str) -> None:
     """
-    The function creates a .csv file and records the column names.
+    The function takes as input the name for the .csv file, 
+    creates a .csv file with the passed name and writes the column headers.
     """
     with open(namecsv + ".csv", 'w', newline='') as f:
         filewriter = csv.writer(f, delimiter=',', lineterminator='\r')
@@ -51,7 +56,12 @@ def write_path(namecsv: str, name: str, dir: str):
 
 
 def main(name1: str, name2: str, dir: str) -> None:
-    creating_csvfile("Annotasion1", dir)
+    """
+    The main() function is supplied with the names of classes 
+    and the name of the directory. A .csv file with the name "Annotation" 
+    is created and absolute and relative paths are written there alternately from each class.
+    """
+    creating_csvfile("Annotasion1")
     write_path("Annotasion1", name1, dir)
     write_path("Annotasion1", name2, dir)
 

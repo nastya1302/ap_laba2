@@ -26,7 +26,8 @@ def copy_images(old_dir: str, new_dir: str, names: List[str]) -> None:
 
 def creating_csvfile(namecsv: str) -> None:
     """
-    The function creates a .csv file and records the column names.
+    The function takes as input the name for the .csv file, 
+    creates a .csv file with the passed name and writes the column headers.
     """
     with open(namecsv + ".csv", 'w', newline='') as f:
         filewriter = csv.writer(f, delimiter=',', lineterminator='\r')
@@ -34,6 +35,13 @@ def creating_csvfile(namecsv: str) -> None:
 
 
 def main(names: List[str], old_dir: str, new_dir: str) -> None:
+    """
+    The main() function is fed a list of class names, the names of 
+    the old and new directories. A new .csv file is created for the 
+    new data. A directory with a new name is created, into which images 
+    from the old directory with the changed name will be copied and their 
+    new absolute and relative paths will be written to the .csv file at the same time.
+    """
     if not os.path.isdir(new_dir):
         os.mkdir(new_dir)
     creating_csvfile("Annotasion2")
