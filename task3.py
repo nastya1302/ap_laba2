@@ -6,15 +6,19 @@ from typing import List
 
 
 def copy_images(old_dir: str, new_dir: str, names: List[str]) -> None:
-    abs_path = os.path.abspath(new_dir)
-    rel_path = os.path.relpath(new_dir)
-    random_number = random.sample((range(0,10000)), 2000) 
-    count = 0
+    """
+    The function copies one image from the old directory to the new one, 
+    changing the name, and immediately writes its absolute, relative paths and class name to the .csv file.
+    """
+    abs_path:str = os.path.abspath(new_dir)
+    rel_path:str = os.path.relpath(new_dir)
+    random_number:List[str] = random.sample((range(0,10000)), 2000) 
+    count:int = 0
     for name in names:
-        path = os.path.join(os.path.abspath(old_dir), name)
-        list_images = os.listdir(path)
+        path:str = os.path.join(os.path.abspath(old_dir), name)
+        list_images:List[str] = os.listdir(path)
         for img in list_images:
-            new_name = f'{random_number[count]}'.zfill(5)
+            new_name:str = f'{random_number[count]}'.zfill(5)
             shutil.copy(
             os.path.join(path, img),
             os.path.join(new_dir, f'{new_name}.jpg')
@@ -26,6 +30,9 @@ def copy_images(old_dir: str, new_dir: str, names: List[str]) -> None:
 
 
 def creating_csvfile(namecsv: str) -> None:
+    """
+    The function creates a .csv file and records the column names.
+    """
     with open(namecsv + ".csv", 'w', newline='') as f:
         filewriter = csv.writer(f, delimiter=',', lineterminator='\r')
         filewriter.writerow(['Absolute path', 'Relative path', 'Class name'])

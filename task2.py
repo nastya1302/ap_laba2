@@ -5,11 +5,15 @@ from typing import List
 
 
 def copy_images(old_dir: str, new_dir: str, names: List[str]) -> None:
-    abs_path = os.path.abspath(new_dir)
-    rel_path = os.path.relpath(new_dir) 
+    """
+    The function copies one image from the old directory to the new one,
+    changing the name, and immediately writes its absolute, relative paths and class name to the .csv file.
+    """
+    abs_path:str = os.path.abspath(new_dir)
+    rel_path:str = os.path.relpath(new_dir) 
     for name in names:
-        path = os.path.join(os.path.abspath(old_dir), name)
-        list_images = os.listdir(path)
+        path:str = os.path.join(os.path.abspath(old_dir), name)
+        list_images:List[str] = os.listdir(path)
         for img in list_images:
             shutil.copy(
             os.path.join(path, img),
@@ -21,6 +25,9 @@ def copy_images(old_dir: str, new_dir: str, names: List[str]) -> None:
 
 
 def creating_csvfile(namecsv: str) -> None:
+    """
+    The function creates a .csv file and records the column names.
+    """
     with open(namecsv + ".csv", 'w', newline='') as f:
         filewriter = csv.writer(f, delimiter=',', lineterminator='\r')
         filewriter.writerow(['Absolute path', 'Relative path', 'Class name'])
